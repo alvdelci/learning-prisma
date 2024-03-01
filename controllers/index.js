@@ -21,15 +21,36 @@ module.exports = {
         }
     },
 
-    read(req, res) {
-        res.json({ method: "read" });
+    async read(req, res) {
+        const { email } = req.params;
+
+        const user = await prisma.user.findUnique({
+            where: {
+                email
+            },
+            select: {
+                id: true,
+                email: true,
+                name: true,
+            }
+        });
+
+        res.json(user);
     },
 
     update(req, res) {
         res.json({ method: "update" });
     },
 
-    excluir(req, res) {
-        res.json({ method: "delete" });
+    async excluir(req, res) {
+        const { email } = req.params;
+
+        const user = await prisma.user.delete({
+            where: {
+                email
+            },
+        });
+
+        res.json(user);
     }
 }
