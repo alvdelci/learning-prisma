@@ -11,5 +11,5 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(port, () => {
-    console.log(`Servidor online na porta ${port}`);
+    console.log(`Server online on port ${port}`);
 });
