@@ -31,5 +31,14 @@ model User {
     email   String   @unique
     name    String?
     posts   Post[]
+    products Product[]
     profile Profile?
+}
+
+model Product {
+    id      Int      @id @default(autoincrement())
+    code   String   @unique
+    name    String?
+    category   String
+    quantity Int
 }
